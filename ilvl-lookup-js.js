@@ -2,7 +2,8 @@
 const refreshButton = document.querySelector(".refresh-button");
 // Create a const for the target <ul>
 const characterList = document.querySelector(".character-list");
-
+// For hiding later
+var x = document.querySelector(".info-div");
 // Listen for the button to be pressed and call and return the data we need using the above function
 refreshButton.addEventListener("click", () => {
   console.log("Thanks for clicking that button! Now to get to work.");
@@ -24,9 +25,10 @@ refreshButton.addEventListener("click", () => {
       xhReqChar.send(null);
       var jsonObjectCharacter = JSON.parse(xhReqChar.responseText);
       // We should now have jsonObjectCharacter detailing the current character's items and armour
-      toPrint += "<li><em>Name</em>: " + jsonObjectGuild.members[i].character.name + ", <em>Character Item Level</em>:" + jsonObjectCharacter.items.averageItemLevel + "</li><br>" ;
+      toPrint += "<li><em>Name</em>: " + jsonObjectGuild.members[i].character.name + ", <em>Character Item Level</em>: " + jsonObjectCharacter.items.averageItemLevel + "</li><br>" ;
     }
   } // Finished with FOR loop code
   console.log("Finished! Now printing character names and their iLvls.")
+  x.style.display = "none";
   characterList.innerHTML = toPrint;
 }) // Finished with button click code
