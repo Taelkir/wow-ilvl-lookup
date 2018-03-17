@@ -13,7 +13,11 @@ refreshButton.addEventListener("click", () => {
   var jsonObject = JSON.parse(xhReq.responseText);
   // Code copy&paste finished.
   // Now have the JSON object stored in a variable called jsonObject
-
-  characterList.innerHTML = "<li><em>Name</em>: " + jsonObject.members[0].character.name + ", <em>Character Level</em>:" + jsonObject.members[0].character.level + "</li>";
-
-})
+  var toPrint;
+  for (i = 0; i < jsonObject.members.length; i++) {
+    if (jsonObject.members[i].character.level == "110") { // Only add a character to the list for printing if they're level 110
+    toPrint += "<li><em>Name</em>: " + jsonObject.members[i].character.name + ", <em>Character Level</em>:" + jsonObject.members[i].character.level + "</li><br>" ;
+    }
+    characterList.innerHTML = toPrint;
+  } // Finished with FOR loop code
+}) // Finished with button click code
