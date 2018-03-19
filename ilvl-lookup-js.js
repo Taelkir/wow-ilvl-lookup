@@ -1,12 +1,12 @@
-// Create a const for the button
-const refreshButton = document.querySelector(".refresh-button");
-// Create a const for the target <ul>
-const characterList = document.querySelector(".character-list");
-// For hiding later
-var x = document.querySelector(".info-div");
+const refreshButton = document.querySelector(".refresh-button"); // Create a const for the button
+const characterList = document.querySelector(".character-list"); // Create a const for the target <ul>
+var x = document.querySelector(".info-div"); // For hiding later
+var loadingDiv = document.querySelector(".loading-spinner"); // For showing while loading
+
 // Listen for the button to be pressed and call and return the data we need using the above function
 refreshButton.addEventListener("click", () => {
   console.log("Thanks for clicking that button! Now to get to work.");
+  loadingDiv.style.display = "block";
   // This bit stolen from https://stackoverflow.com/a/11116930 because I don't understand jQuery
   var xhReqGuild = new XMLHttpRequest();
   xhReqGuild.open("GET", "https://eu.api.battle.net/wow/guild/argent-dawn/Cutthroat%20Comrades?fields=members&locale=en_GB&apikey=wr4u5hb5magzc44cc8usfum542fq7p3j", false);
@@ -31,4 +31,5 @@ refreshButton.addEventListener("click", () => {
   console.log("Finished! Now printing character names and their iLvls.")
   x.style.display = "none";
   characterList.innerHTML = toPrint;
+  loadingDiv.style.display = "none";
 }) // Finished with button click code
