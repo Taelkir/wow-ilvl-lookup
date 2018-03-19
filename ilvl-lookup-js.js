@@ -1,6 +1,6 @@
 const refreshButton = document.querySelector(".refresh-button"); // Create a const for the button
 const characterList = document.querySelector(".character-list"); // Create a const for the target <ul>
-var x = document.querySelector(".info-div"); // For hiding later
+var infoDiv = document.querySelector(".info-div"); // For hiding later
 var loadingDiv = document.querySelector(".loading-spinner"); // For showing while loading
 var jsonObjectGuild = {}; // Store the guild-level JSON request here
 var jsonObjectCharacter = {}; // Store the character-level JSON request here
@@ -44,7 +44,7 @@ function characterApiCall (){
 
 function finishOff() {
   console.log("Finished, for better or worse! Now trying to print character names and their iLvls.")
-  x.style.display = "none";
+  infoDiv.style.display = "none";
   characterList.innerHTML = toPrint;
   loadingDiv.style.display = "none";
 }
