@@ -2,6 +2,7 @@ const refreshButton = document.querySelector(".refresh-button"); // Create a con
 const characterList = document.querySelector(".character-list"); // Create a const for the target <ul>
 var x = document.querySelector(".info-div"); // For hiding later
 var loadingDiv = document.querySelector(".loading-spinner"); // For showing while loading
+var jsonObjectGuild = {}; // Store the guild-level JSON request here
 
 // Listen for the button to be pressed and call and return the data we need using the above function
 refreshButton.addEventListener("click", () => {
@@ -11,9 +12,8 @@ refreshButton.addEventListener("click", () => {
   var xhReqGuild = new XMLHttpRequest();
   xhReqGuild.open("GET", "https://eu.api.battle.net/wow/guild/argent-dawn/Cutthroat%20Comrades?fields=members&locale=en_GB&apikey=wr4u5hb5magzc44cc8usfum542fq7p3j", false);
   xhReqGuild.send(null);
-  var jsonObjectGuild = JSON.parse(xhReqGuild.responseText);
+  jsonObjectGuild = JSON.parse(xhReqGuild.responseText);
   // Stolen code finished with. For now...
-  // Now have the JSON object stored in a variable called jsonObject
   var toPrint = "";
   var characterName = {}; // Array to store character names in for requesting their ilvl later
   for (i = 0; i < jsonObjectGuild.members.length; i++) {
