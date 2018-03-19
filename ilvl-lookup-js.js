@@ -42,11 +42,6 @@ function characterApiCall (){
   } // Finished with FOR loop code
 }
 
-function setup() {
-  loadingDiv.style.display="block";
-  console.log("Thanks for clicking that button! Now to get to work.");
-}
-
 function finishOff() {
   console.log("Finished, for better or worse! Now trying to print character names and their iLvls.")
   x.style.display = "none";
@@ -56,7 +51,8 @@ function finishOff() {
 
 // Listen for the button to be pressed and call and return the data we need using the above function
 refreshButton.addEventListener("click", () => {
-  setup();
+  loadingDiv.style.display="block";
+  console.log("Thanks for clicking that button! Now to get to work.");
   guildApiCall();
   setTimeout(characterApiCall, 5000);
   setTimeout(finishOff, 10000);
