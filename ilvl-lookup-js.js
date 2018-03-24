@@ -36,13 +36,15 @@ function sortAndPrint() {
     return o.items.averageItemLevel;
   });
   // Now to build the thing to actually print. Note to self: might look good as HTML table
+  toPrint = "<table class='character-table'><tr><th>Character Name</th><th>Item Level</th></tr>"
   for (j = 0; j < jsonObjectCharacters.length; j++) {
-    toPrint += "Name: "
+    toPrint += "<tr><td>"
     toPrint += jsonObjectCharacters[j].name
-    toPrint += " | iLvl: "
+    toPrint += "</td><td>"
     toPrint += jsonObjectCharacters[j].items.averageItemLevel
-    toPrint += "<br>"
+    toPrint += "</td></tr>"
   }
+  toPrint += "</table>"
   infoDiv.style.display = "none";
   characterList.innerHTML = toPrint;
   $(".loading-Spinner").slideUp();
