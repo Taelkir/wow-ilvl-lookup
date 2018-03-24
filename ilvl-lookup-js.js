@@ -29,10 +29,10 @@ function characterApiCall (){
   } // Finished with FOR loop code
 }
 
-function finishOff() {
+function sortAndPrint() {
   console.log("Finished, for better or worse! Now trying to print character names and their iLvls.")
   // Code to organise the character array to go here
-  jsonObjectCharacters = _.sortBy(jsonObjectCharacters, function(o) { 
+  jsonObjectCharacters = _.sortBy(jsonObjectCharacters, function(o) {
     return o.items.averageItemLevel;
   });
   // Now to build the thing to actually print. Note to self: might look good as HTML table
@@ -54,5 +54,5 @@ refreshButton.addEventListener("click", () => {
   console.log("Thanks for clicking that button! Now to get to work.");
   guildApiCall();
   setTimeout(characterApiCall, 5000);
-  setTimeout(finishOff, 10000);
+  setTimeout(sortAndPrint, 10000);
 }); // Finished with button click code
