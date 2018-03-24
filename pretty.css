@@ -32,3 +32,18 @@ body {
 .loading-spinner {
   display: none;
 }
+
+.character-table {
+  width: 450px;
+  text-align: center;
+}
+
+.character-table th {
+  background-color: darkgray;
+  color: white;
+  font-weight: bold;
+}
+
+.character-table tr:nth-child(even) {
+  background-color: lightgray;
+}
