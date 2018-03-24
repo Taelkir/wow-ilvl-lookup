@@ -32,12 +32,14 @@ function characterApiCall (){
 function finishOff() {
   console.log("Finished, for better or worse! Now trying to print character names and their iLvls.")
   // Code to organise the character array to go here
-  // as-yet unwritten code
+  jsonObjectCharacters = _.sortBy(jsonObjectCharacters, function(o) { 
+    return o.items.averageItemLevel;
+  });
   // Now to build the thing to actually print. Note to self: might look good as HTML table
   for (j = 0; j < jsonObjectCharacters.length; j++) {
     toPrint += "Name: "
     toPrint += jsonObjectCharacters[j].name
-    toPrint += " iLvl: "
+    toPrint += " | iLvl: "
     toPrint += jsonObjectCharacters[j].items.averageItemLevel
     toPrint += "<br>"
   }
