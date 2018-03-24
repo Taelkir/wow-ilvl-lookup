@@ -56,7 +56,7 @@ refreshButton.addEventListener("click", () => {
   $(".loading-Spinner").slideDown();
   console.log("Thanks for clicking that button! Now to get to work.");
   guildApiCall();
-  setTimeout(characterApiCall, 5000);
-  setTimeout(sortAndPrint, 10000);
+  setTimeout(characterApiCall, 1500);
+  setTimeout(sortAndPrint, 4000);
   $(".refresh-button").hide();
 }); // Finished with button click code
