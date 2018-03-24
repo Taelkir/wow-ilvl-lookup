@@ -35,6 +35,7 @@ function sortAndPrint() {
   jsonObjectCharacters = _.sortBy(jsonObjectCharacters, function(o) {
     return o.items.averageItemLevel;
   });
+  jsonObjectCharacters = jsonObjectCharacters.reverse() // Highest at the top
   // Now to build the thing to actually print. Note to self: might look good as HTML table
   toPrint = "<table class='character-table'><tr><th>Character Name</th><th>Item Level</th></tr>"
   for (j = 0; j < jsonObjectCharacters.length; j++) {
@@ -57,4 +58,5 @@ refreshButton.addEventListener("click", () => {
   guildApiCall();
   setTimeout(characterApiCall, 5000);
   setTimeout(sortAndPrint, 10000);
+  $(".refresh-button").hide();
 }); // Finished with button click code
