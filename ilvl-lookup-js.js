@@ -15,7 +15,7 @@ function guildApiCall (){
   })
 };
 
-  // Call the character API (used many times)
+  // Call the character API (used for each character in the guild)
 function characterApiCall (){
   for (i = 0; i < jsonObjectGuild.members.length; i++) {
     if (jsonObjectGuild.members[i].character.level == "110") { // Only do things if a character is level 110
