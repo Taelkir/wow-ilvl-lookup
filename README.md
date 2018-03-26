@@ -6,4 +6,3 @@ Also available at http://tomstanley.me/page/ilvls/ilvl-lookup-main.html, but may
 ## Eventually will:
 
 - Be able to search any guild
-- Display characters in "leaderboard" order, highest iLvl at the top
