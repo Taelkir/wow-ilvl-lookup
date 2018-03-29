@@ -5,8 +5,6 @@ let jsonObjectGuild = {}; // Store the guild-level JSON request here
 var jsonObjectCharacters = []; // Store the character-level JSON requests here
 var toPrint = ""; // Build up the <li> elements here filled with juicy information
 var characterName = {}; // Array to store character names in for requesting their ilvl later
-var xhReqGuild;
-var xhReqChar;
 
 // Call the guild API (used once)
 function guildApiCall (){
@@ -22,12 +20,14 @@ function guildApiCall (){
         })
       }
     } // Finished with FOR loop code
+    setTimeout(sortAndPrint, 500);
   })
 };
 
+// Does what it says on the tin once we have all the data we need from the first function
 function sortAndPrint() {
   console.log("Finished, for better or worse! Now trying to print character names and their iLvls.")
-  // Code to organise the character array to go here
+  // Code to organise the character array
   jsonObjectCharacters = _.sortBy(jsonObjectCharacters, function(o) {
     return o.items.averageItemLevel;
   });
@@ -52,6 +52,5 @@ refreshButton.addEventListener("click", () => {
   $(".loading-Spinner").slideDown();
   console.log("Thanks for clicking that button! Now to get to work.");
   guildApiCall();
-  setTimeout(sortAndPrint, 4000);
   $(".refresh-button").hide();
 }); // Finished with button click code
