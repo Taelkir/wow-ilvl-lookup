@@ -10,24 +10,20 @@ var xhReqChar;
 
 // Call the guild API (used once)
 function guildApiCall (){
-  $.getJSON("https://eu.api.battle.net/wow/guild/argent-dawn/Cutthroat%20Comrades?fields=members&locale=en_GB&apikey=wr4u5hb5magzc44cc8usfum542fq7p3j", function(json){
-      jsonObjectGuild = json;
+  $.getJSON("https://eu.api.battle.net/wow/guild/argent-dawn/Cutthroat%20Comrades?fields=members&locale=en_GB&apikey=wr4u5hb5magzc44cc8usfum542fq7p3j", function(data){
+    jsonObjectGuild = data;
+    for (i = 0; i < jsonObjectGuild.members.length; i++) {
+      if (jsonObjectGuild.members[i].character.level == "110") { // Only do things if a character is level 110
+        characterName[i] = jsonObjectGuild.members[i].character.name;
+        // Now to look up each character as we reach them in the loop
+        $.getJSON("https://eu.api.battle.net/wow/character/argent-dawn/" + characterName[i] + "?fields=items&locale=en_GB&apikey=wr4u5hb5magzc44cc8usfum542fq7p3j", function(json){
+            jsonObjectCharacters.push(json);
+            // We are now building up jsonObjectCharacters with all the characters' data
+        })
+      }
+    } // Finished with FOR loop code
   })
 };
-
-  // Call the character API (used for each character in the guild)
-function characterApiCall (){
-  for (i = 0; i < jsonObjectGuild.members.length; i++) {
-    if (jsonObjectGuild.members[i].character.level == "110") { // Only do things if a character is level 110
-      characterName[i] = jsonObjectGuild.members[i].character.name;
-      // Now to look up each character as we reach them in the loop
-      $.getJSON("https://eu.api.battle.net/wow/character/argent-dawn/" + characterName[i] + "?fields=items&locale=en_GB&apikey=wr4u5hb5magzc44cc8usfum542fq7p3j", function(json){
-          jsonObjectCharacters.push(json);
-          // We are now building up jsonObjectCharacters with all the characters' data
-      })
-    }
-  } // Finished with FOR loop code
-}
 
 function sortAndPrint() {
   console.log("Finished, for better or worse! Now trying to print character names and their iLvls.")
@@ -36,7 +32,7 @@ function sortAndPrint() {
     return o.items.averageItemLevel;
   });
   jsonObjectCharacters = jsonObjectCharacters.reverse() // Highest at the top
-  // Now to build the thing to actually print. Note to self: might look good as HTML table
+  // Now to build the HTML table
   toPrint = "<table class='character-table'><tr><th>Character Name</th><th>Item Level</th></tr>"
   for (j = 0; j < jsonObjectCharacters.length; j++) {
     toPrint += "<tr><td>"
@@ -56,7 +52,6 @@ refreshButton.addEventListener("click", () => {
   $(".loading-Spinner").slideDown();
   console.log("Thanks for clicking that button! Now to get to work.");
   guildApiCall();
-  setTimeout(characterApiCall, 2000);
   setTimeout(sortAndPrint, 4000);
   $(".refresh-button").hide();
 }); // Finished with button click code
