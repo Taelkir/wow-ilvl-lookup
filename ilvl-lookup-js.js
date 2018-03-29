@@ -1,14 +1,17 @@
 const refreshButton = document.querySelector(".refresh-button"); // Create a const for the button
 const characterList = document.querySelector(".character-list"); // Create a const for the target <ul>
+// const serverNameInput = document.querySelector("#serverNameInput"); for later
 var infoDiv = document.querySelector(".info-div"); // For hiding later
-let jsonObjectGuild = {}; // Store the guild-level JSON request here
 var jsonObjectCharacters = []; // Store the character-level JSON requests here
 var toPrint = ""; // Build up the <li> elements here filled with juicy information
 var characterName = {}; // Array to store character names in for requesting their ilvl later
+let jsonObjectGuild = {}; // Store the guild-level JSON request here
+let guildNameInput = "";
+
 
 // Call the guild API (used once)
 function guildApiCall (){
-  $.getJSON("https://eu.api.battle.net/wow/guild/argent-dawn/Cutthroat%20Comrades?fields=members&locale=en_GB&apikey=wr4u5hb5magzc44cc8usfum542fq7p3j", function(data){
+  $.getJSON("https://eu.api.battle.net/wow/guild/argent-dawn/" + guildNameInput + "?fields=members&locale=en_GB&apikey=wr4u5hb5magzc44cc8usfum542fq7p3j", function(data){
     jsonObjectGuild = data;
     for (i = 0; i < jsonObjectGuild.members.length; i++) {
       if (jsonObjectGuild.members[i].character.level == "110") { // Only do things if a character is level 110
@@ -20,7 +23,7 @@ function guildApiCall (){
         })
       }
     } // Finished with FOR loop code
-    setTimeout(sortAndPrint, 500);
+    setTimeout(sortAndPrint, 2000);
   })
 };
 
@@ -49,6 +52,7 @@ function sortAndPrint() {
 
 // Listen for the button to be pressed and call and return the data we need using the above function
 refreshButton.addEventListener("click", () => {
+  guildNameInput = encodeURI(document.querySelector("#guildNameInput").value)
   $(".loading-Spinner").slideDown();
   console.log("Thanks for clicking that button! Now to get to work.");
   guildApiCall();
