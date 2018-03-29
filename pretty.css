@@ -23,7 +23,15 @@ body {
 
 .faction-logo {
   height: 400px;
+  padding: 20px;
+}
+
+#horde-logo {
   width: 250px;
+}
+
+#alliance-logo {
+  width: 300px;
 }
 
 .info-div {
@@ -34,13 +42,19 @@ body {
   display: block;
 }
 
+button {
+  margin: 10px;
+}
+
 .loading-spinner {
   display: none;
+  padding-top: 10px;
 }
 
 .character-table {
   width: 450px;
   text-align: center;
+  padding: 20px 0;
 }
 
 .character-table th {
