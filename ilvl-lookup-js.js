@@ -1,5 +1,7 @@
 const refreshButton = document.querySelector(".refresh-button"); // Create a const for the button
 const characterList = document.querySelector(".character-list"); // Create a const for the target <ul>
+const factionLogo = document.querySelector(".faction-logo");
+// const guildSelect = document.querySelector("#guildNameInput")
 // const serverNameInput = document.querySelector("#serverNameInput"); for later
 var infoDiv = document.querySelector(".info-div"); // For hiding later
 var jsonObjectCharacters = []; // Store the character-level JSON requests here
@@ -49,6 +51,18 @@ function sortAndPrint() {
   characterList.innerHTML = toPrint;
   $(".loading-Spinner").slideUp();
 }
+
+// Functions to swap logo on <select> change
+$( "#guildNameInput" ).change(function() {
+  if ($("#guildNameInput").val() === "Tea Appreciation Society") {
+    $("#alliance-logo").show();
+    $("#horde-logo").hide();
+  } else if ($("#guildNameInput").val() === "Cutthroat Comrades") {
+    $("#alliance-logo").hide();
+    $("#horde-logo").show();
+  }
+});
+$("#alliance-logo").hide();
 
 // Listen for the button to be pressed and call and return the data we need using the above function
 refreshButton.addEventListener("click", () => {

@@ -21,6 +21,11 @@ body {
   align-items: center;
 }
 
+.faction-logo {
+  height: 400px;
+  width: 250px;
+}
+
 .info-div {
   flex-direction: column;
   justify-content: center;
