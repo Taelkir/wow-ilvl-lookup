@@ -52,17 +52,18 @@ function sortAndPrint() {
   $(".loading-Spinner").slideUp();
 }
 
-// Functions to swap logo on <select> change
-$( "#guildNameInput" ).change(function() {
+
+
+// Function to show the correct logo for the guild
+function factionLogoChange() {
+    $(".factionLogo").innerHTML = " ";
   if ($("#guildNameInput").val() === "Tea Appreciation Society") {
-    $("#alliance-logo").show();
-    $("#horde-logo").hide();
+    $(".faction-logo").html(`<img class="alliance-logo" id="alliance-logo" src="alliance logo.png" alt="alliance logo">`);
   } else if ($("#guildNameInput").val() === "Cutthroat Comrades") {
-    $("#alliance-logo").hide();
-    $("#horde-logo").show();
+    $(".faction-logo").html(`<img class="horde-logo" id="horde-logo" src="horde logo.png" alt="horde logo">`);
   }
-});
-$("#alliance-logo").hide();
+}
+
 
 // Listen for the button to be pressed and call and return the data we need using the above function
 refreshButton.addEventListener("click", () => {
@@ -72,3 +73,8 @@ refreshButton.addEventListener("click", () => {
   guildApiCall();
   $(".refresh-button").hide();
 }); // Finished with button click code
+
+
+// Do these two on load
+factionLogoChange();
+$( "#guildNameInput" ).on("change", factionLogoChange);
