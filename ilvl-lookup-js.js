@@ -3,10 +3,10 @@ const characterList = document.querySelector(".character-list"); // Create a con
 const factionLogo = document.querySelector(".faction-logo");
 // const guildSelect = document.querySelector("#guildNameInput")
 // const serverNameInput = document.querySelector("#serverNameInput"); for later
-var infoDiv = document.querySelector(".info-div"); // For hiding later
-var jsonObjectCharacters = []; // Store the character-level JSON requests here
-var toPrint = ""; // Build up the <li> elements here filled with juicy information
-var characterName = {}; // Array to store character names in for requesting their ilvl later
+const infoDiv = document.querySelector(".info-div"); // For hiding later
+let jsonObjectCharacters = []; // Store the character-level JSON requests here
+let toPrint = ""; // Build up the <li> elements here filled with juicy information
+let characterName = {}; // Array to store character names in for requesting their ilvl later
 let jsonObjectGuild = {}; // Store the guild-level JSON request here
 let guildNameInput = "";
 
