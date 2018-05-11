@@ -28,6 +28,15 @@ function guildApiCall (){
   })
 };
 
+// Listen for the button to be pressed and call and return the data we need using the above function
+refreshButton.addEventListener("click", () => {
+  guildNameInput = encodeURI(document.querySelector("#guildNameInput").value)
+  $(".loading-Spinner").slideDown();
+  console.log("Thanks for clicking that button! Now to get to work.");
+  guildApiCall();
+  $(".refresh-button").hide();
+}); // Finished with button click code
+
 // Does what it says on the tin once we have all the data we need from the first function
 function sortAndPrint() {
   console.log("Finished, for better or worse! Now trying to print character names and their iLvls.")
@@ -60,15 +69,6 @@ function factionLogoChange() {
     $(".faction-logo").html(`<img class="horde-logo" id="horde-logo" src="horde logo.png" alt="horde logo">`);
   }
 }
-
-// Listen for the button to be pressed and call and return the data we need using the above function
-refreshButton.addEventListener("click", () => {
-  guildNameInput = encodeURI(document.querySelector("#guildNameInput").value)
-  $(".loading-Spinner").slideDown();
-  console.log("Thanks for clicking that button! Now to get to work.");
-  guildApiCall();
-  $(".refresh-button").hide();
-}); // Finished with button click code
 
 // Do these two on load
 factionLogoChange();
