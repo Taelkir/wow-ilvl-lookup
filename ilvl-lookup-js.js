@@ -10,7 +10,6 @@ var characterName = {}; // Array to store character names in for requesting thei
 let jsonObjectGuild = {}; // Store the guild-level JSON request here
 let guildNameInput = "";
 
-
 // Call the guild API (used once)
 function guildApiCall (){
   $.getJSON("https://eu.api.battle.net/wow/guild/argent-dawn/" + guildNameInput + "?fields=members&locale=en_GB&apikey=wr4u5hb5magzc44cc8usfum542fq7p3j", function(data){
@@ -52,8 +51,6 @@ function sortAndPrint() {
   $(".loading-Spinner").slideUp();
 }
 
-
-
 // Function to show the correct logo for the guild
 function factionLogoChange() {
     $(".factionLogo").innerHTML = " ";
@@ -64,7 +61,6 @@ function factionLogoChange() {
   }
 }
 
-
 // Listen for the button to be pressed and call and return the data we need using the above function
 refreshButton.addEventListener("click", () => {
   guildNameInput = encodeURI(document.querySelector("#guildNameInput").value)
@@ -73,7 +69,6 @@ refreshButton.addEventListener("click", () => {
   guildApiCall();
   $(".refresh-button").hide();
 }); // Finished with button click code
-
 
 // Do these two on load
 factionLogoChange();
