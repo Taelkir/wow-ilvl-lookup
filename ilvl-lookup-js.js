@@ -20,11 +20,11 @@ function guildApiCall (){
         // Now to look up each character as we reach them in the loop
         $.getJSON("https://eu.api.battle.net/wow/character/argent-dawn/" + characterName[i] + "?fields=items&locale=en_GB&apikey=wr4u5hb5magzc44cc8usfum542fq7p3j", function(json){
             jsonObjectCharacters.push(json);
-            // We are now building up jsonObjectCharacters with all the characters' data
+            // We are now building up jsonObjectCharacters with all the characters' data. Let's start printing!
+            sortAndPrint();
         })
       }
     } // Finished with FOR loop code
-    setTimeout(sortAndPrint, 2000);
   })
 };
 
@@ -39,7 +39,7 @@ refreshButton.addEventListener("click", () => {
 
 // Does what it says on the tin once we have all the data we need from the first function
 function sortAndPrint() {
-  console.log("Finished, for better or worse! Now trying to print character names and their iLvls.")
+  console.log("Going to start trying to print character names and their iLvls.")
   // Code to organise the character array
   jsonObjectCharacters = _.sortBy(jsonObjectCharacters, function(o) {
     return o.items.averageItemLevel;
