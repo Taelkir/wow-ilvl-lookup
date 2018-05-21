@@ -48,7 +48,12 @@ button {
 
 .loading-spinner {
   display: none;
+  flex-direction: column;
   padding-top: 10px;
+}
+
+.loading-spinner > img {
+  margin: auto;
 }
 
 .character-table {

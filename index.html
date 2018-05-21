@@ -12,6 +12,7 @@
           I'm afraid you need JavaScript enabled for this to work.
         </noscript>
       </div>
+
       <div class="info-div">
         <label for="guildNameInput">Enter Guild Name:</label>
         <select id="guildNameInput" type="text">
@@ -22,13 +23,15 @@
         <!-- <label for="serverNameInput">Enter Server Name:</label> -->
         <!-- <input id="serverNameInput" type="text" value="Argent Dawn"> -->
 
-        <div class="loading-spinner">
-          <img src="ajax-loader.gif" alt="Loading..."><p>Loading...</p>
-        </div>
+        <button type="button" class="refresh-button">Click to Load</button>
       </div>
-      <button type="button" class="refresh-button">Click to Load</button>
+
       <div class="character-list">
       </div>
+      <div class="loading-spinner">
+        <img src="ajax-loader.gif" alt="Loading..."><p>Loading...</p>
+      </div>
+
     </div>
     <footer>
       <p>	&copy; <a href="http://tomstanley.me">Tom Stanley 2018</a> or <a href="https://github.com/Taelkir/wow-ilvl-lookup">Check it out on Github</a> or <a href="https://twitter.com/stantomley">@stantomley</a></p>
