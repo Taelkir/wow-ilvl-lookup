@@ -43,7 +43,6 @@ function guildApiCall (){
 refreshButton.addEventListener("click", () => {
   guildNameInput = encodeURI(document.querySelector("#guildNameInput").value)
   $(".loading-Spinner").css('display', 'flex');
-  console.log("Thanks for clicking that button! Now to get to work.");
   guildApiCall();
   $(".refresh-button").hide();
 }); // Finished with button click code
@@ -68,7 +67,7 @@ function sortAndPrint() {
   toPrint += "</table>"
   infoDiv.style.display = "none";
   characterList.innerHTML = toPrint;
-  console.log(`Processed ${numberOfProcessed110s} so far.`)
+  // Hide the loading spinner again once finished populating table
   if (numberOfLevel110s === numberOfProcessed110s) {
     $(".loading-Spinner").css('display', 'none');
   }
