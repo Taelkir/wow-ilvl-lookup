@@ -9,28 +9,28 @@ let toPrint = ""; // Build up the <li> elements here filled with juicy informati
 let characterName = {}; // Array to store character names in for requesting their ilvl later
 let jsonObjectGuild = {}; // Store the guild-level JSON request here
 let guildNameInput = "";
-let numberOfLevel110s = 0; // These two decide when to put the loading spinner away
-let numberOfProcessed110s = 0;
+let numberOfLevel120s = 0; // These two decide when to put the loading spinner away
+let numberOfProcessed120s = 0;
 
 
 // Call the guild API (used once)
 function guildApiCall (){
   $.getJSON("https://eu.api.battle.net/wow/guild/argent-dawn/" + guildNameInput + "?fields=members&locale=en_GB&apikey=wr4u5hb5magzc44cc8usfum542fq7p3j", function(data){
     jsonObjectGuild = data;
-    // Count how many characters are 110
+    // Count how many characters are 120
     for (i = 0; i < jsonObjectGuild.members.length; i++) {
-      if (jsonObjectGuild.members[i].character.level == "110") {
-        numberOfLevel110s += 1;
-        console.log(`Looks like we've got ${numberOfLevel110s} 110s in the guild.`);
+      if (jsonObjectGuild.members[i].character.level == "120") {
+        numberOfLevel120s += 1;
+        console.log(`Looks like we've got ${numberOfLevel120s} 120s in the guild.`);
       }
     }
     for (i = 0; i < jsonObjectGuild.members.length; i++) {
-      if (jsonObjectGuild.members[i].character.level == "110") { // Only do things if a character is level 110
+      if (jsonObjectGuild.members[i].character.level == "120") { // Only do things if a character is level 120
         characterName[i] = jsonObjectGuild.members[i].character.name;
         // Now to look up each character as we reach them in the loop
         $.getJSON("https://eu.api.battle.net/wow/character/argent-dawn/" + characterName[i] + "?fields=items&locale=en_GB&apikey=wr4u5hb5magzc44cc8usfum542fq7p3j", function(json){
             jsonObjectCharacters.push(json);
-            numberOfProcessed110s += 1;
+            numberOfProcessed120s += 1;
             // We are now building up jsonObjectCharacters with all the characters' data. Let's start printing!
             sortAndPrint();
         }) // Finished getJSON callback for one character
@@ -68,7 +68,7 @@ function sortAndPrint() {
   infoDiv.style.display = "none";
   characterList.innerHTML = toPrint;
   // Hide the loading spinner again once finished populating table
-  if (numberOfLevel110s === numberOfProcessed110s) {
+  if (numberOfLevel120s === numberOfProcessed120s) {
     $(".loading-Spinner").css('display', 'none');
   }
 }
