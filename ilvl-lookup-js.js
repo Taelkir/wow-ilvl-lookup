@@ -24,6 +24,10 @@ function guildApiCall (){
         console.log(`Looks like we've got ${numberOfLevel120s} 120s in the guild.`);
       }
     }
+    if (numberOfLevel120s === 0) {
+      sortAndPrint();
+      $(".character-list").html("<p>No characters are max level in this guild.</p>");
+    }
     for (i = 0; i < jsonObjectGuild.members.length; i++) {
       if (jsonObjectGuild.members[i].character.level == "120") { // Only do things if a character is level 120
         characterName[i] = jsonObjectGuild.members[i].character.name;
@@ -32,7 +36,7 @@ function guildApiCall (){
             jsonObjectCharacters.push(json);
             numberOfProcessed120s += 1;
             // We are now building up jsonObjectCharacters with all the characters' data. Let's start printing!
-            sortAndPrint();
+            $(".loading-Spinner").html("'display', 'none'");
         }) // Finished getJSON callback for one character
       }
     } // Finished with FOR loop code
