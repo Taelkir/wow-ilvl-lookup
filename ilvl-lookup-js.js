@@ -36,7 +36,7 @@ function guildApiCall (){
             jsonObjectCharacters.push(json);
             numberOfProcessed120s += 1;
             // We are now building up jsonObjectCharacters with all the characters' data. Let's start printing!
-            sortAndPrint();
+            $(".loading-Spinner").html("'display', 'none'");
         }) // Finished getJSON callback for one character
       }
     } // Finished with FOR loop code
